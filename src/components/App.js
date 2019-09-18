@@ -24,7 +24,7 @@ export default class App extends Component {
     const { galleryList, isLoading } = this.state;
     return (
       <div>
-        <Headline />
+        <Headline text="Top comments" />
         {isLoading ? <Spinner /> : <Gallery galleryList={galleryList} />}
       </div>
     );

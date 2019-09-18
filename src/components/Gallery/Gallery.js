@@ -1,7 +1,24 @@
-import React from 'react';
+import React, { Component } from 'react';
+// components
+import GalleryItem from './GalleryItem';
 // styles
 import styles from './Gallery.module.css';
 
-const Gallery = () => <section className={styles.gallery}>GalleryList</section>;
+export default class Gallery extends Component {
+  state = {};
 
-export default Gallery;
+  render() {
+    const { galleryList = [] } = this.props;
+    return (
+      <section>
+        <ul className={styles.list}>
+          {galleryList.map(gallery => (
+            <li className={styles.item} key={gallery.id}>
+              <GalleryItem galleryList={galleryList} />
+            </li>
+          ))}
+        </ul>
+      </section>
+    );
+  }
+}
