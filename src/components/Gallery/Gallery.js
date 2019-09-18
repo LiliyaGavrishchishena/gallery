@@ -14,7 +14,7 @@ export default class Gallery extends Component {
         <ul className={styles.list}>
           {galleryList.map(gallery => (
             <li className={styles.item} key={gallery.id}>
-              <GalleryItem galleryList={galleryList} />
+              <GalleryItem gallery={gallery} />
             </li>
           ))}
         </ul>
