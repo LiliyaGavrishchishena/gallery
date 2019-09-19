@@ -1,13 +1,13 @@
-.list {
-  display: flex;
-  list-style: none;
+.card {
+  height: 350px;
+  padding: 10px;
 }
 
 .link {
   padding: 0px 24px;
   text-decoration: none;
   text-transform: uppercase;
-  color: #2c465a;
+  //color: #2c465a;
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
 
@@ -17,4 +17,12 @@
 
 .active {
   color: #fea100;
+}
+.img {
+  width: 100%;
+  height: 200px;
+  //background-color: rgb(201, 196, 196);
+}
+.title {
+  font-weight: 700;
 }
