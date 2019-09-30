@@ -15,7 +15,7 @@
   height: 150px;
   border-radius: 50%;
   border: 3px solid transparent;
-  border-top-color: #3498db;
+  border-top-color: #57dd49;
   animation: spin 2s linear infinite;
   z-index: 1001;
 }

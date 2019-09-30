@@ -13,7 +13,7 @@ body {
   font-size: 14px;
   font-weight: 400;
   color: #3c3d3d;
-  background-color: #f6f6f6;
+  background-color: #f5f7f8;
 }
 
 ul,
@@ -26,6 +26,6 @@ li {
 img {
   display: block;
   border: 0;
-  width: 100%;
+  max-width: 100%;
   height: auto;
 }

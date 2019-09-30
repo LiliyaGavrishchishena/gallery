@@ -1,6 +1,14 @@
 .form {
   margin-bottom: 40px;
 }
+
+.question {
+  font-size: 20px;
+  margin: 0;
+  color: #333;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
 .slider {
   appearance: none;
   width: 100%;
@@ -15,10 +23,10 @@
 }
 .slider::-webkit-slider-thumb {
   appearance: none;
-  width: 20px;
-  height: 20px;
+  width: 25px;
+  height: 25px;
   border-radius: 50%;
-  background: #f06424;
+  background: #57dd49;
   cursor: pointer;
 }
 
@@ -26,6 +34,6 @@
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  background: #f06424;
+  background: #57dd49;
   cursor: pointer;
 }

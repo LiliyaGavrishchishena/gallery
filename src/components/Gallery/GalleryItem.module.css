@@ -1,28 +1,41 @@
-.card {
-  height: 350px;
-  padding: 10px;
+.article {
+  padding: 20px;
 }
 
 .link {
-  padding: 0px 24px;
   text-decoration: none;
   text-transform: uppercase;
-  //color: #2c465a;
+  color: #2c465a;
   transition: all 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
 }
-
+.text {
+  flex: 1;
+  font-size: 12px;
+  font-weight: bold;
+  color: #999;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 20px;
+}
 .link:hover {
-  color: #fea100;
+  color: #57dd49;
 }
 
 .active {
-  color: #fea100;
+  color: #57dd49;
 }
 .img {
-  width: 100%;
-  height: 200px;
-  //background-color: rgb(201, 196, 196);
+  background-size: cover;
+  background-position: 50% 50%;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  height: 300px;
+  display: block;
+  overflow: hidden;
 }
+
 .title {
-  font-weight: 700;
+  font-size: 20px;
+  margin: 0;
+  color: #333;
+  font-weight: 600;
 }

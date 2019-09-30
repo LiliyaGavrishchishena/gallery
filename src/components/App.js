@@ -3,17 +3,17 @@ import React, { Component } from 'react';
 import Headline from './Headline/Headline';
 import Gallery from './Gallery/Gallery';
 import Spinner from './Spinner/Spinner';
-import Button from './Button/Button';
 import Range from './Range/Range';
 // api
 import getAllGalleryItems from '../services/api';
+// styles
+import styles from './App.module.css';
 
 const INITIAL_STATE = {
   galleryList: [],
   isLoading: false,
-  sortedByNumCommentsUp: true,
-  range: 0,
-  refresh: 'Start Auto Refresh',
+  minComments: 0,
+  enableAutoRefresh: false,
 };
 export default class App extends Component {
   state = { ...INITIAL_STATE };
@@ -25,20 +25,61 @@ export default class App extends Component {
     });
   }
 
-  handleChangeRange = ({ target: { value } }) => {
+  updateMinComments = ({ target: { value } }) => {
     this.setState({
-      range: value,
+      minComments: Number(value),
     });
   };
 
+  getItemsByComments = (galleryList, minComments) =>
+    galleryList
+      .filter(item => item.data.num_comments >= minComments)
+      .sort((a, b) => b.data.num_comments - a.data.num_comments);
+
+  updateAutoRefresh = () => {
+    const { enableAutoRefresh } = this.state;
+    if (!enableAutoRefresh) {
+      this.autoRefresh = setInterval(() => {
+        getAllGalleryItems();
+      }, 3000);
+    } else {
+      clearInterval(this.autoRefresh);
+    }
+    this.setState({
+      enableAutoRefresh: !enableAutoRefresh,
+    });
+  };
+
+  getItemsByComments = (galleryList, minComments) =>
+    galleryList
+      .filter(item => item.num_comments >= minComments)
+      .sort((a, b) => b.num_comments - a.num_comments);
+
   render() {
-    const { galleryList, isLoading, refresh, range } = this.state;
+    const {
+      galleryList,
+      isLoading,
+      enableAutoRefresh,
+      minComments,
+    } = this.state;
+
+    const itemsByComments = this.getItemsByComments(galleryList, minComments);
+
     return (
-      <div>
+      <div className={styles.container}>
         <Headline text="Top commented." />
-        <Button refresh={refresh} />
-        <Range range={range} handleChangeRange={this.handleChangeRange} />
-        {isLoading ? <Spinner /> : <Gallery galleryList={galleryList} />}
+        <button
+          className={styles.btn}
+          type="button"
+          onClick={this.updateAutoRefresh}
+        >
+          {enableAutoRefresh ? 'Stop auto-refresh' : 'Start auto-refresh'}
+        </button>
+        <Range
+          minComments={minComments}
+          updateMinComments={this.updateMinComments}
+        />
+        {isLoading ? <Spinner /> : <Gallery galleryList={itemsByComments} />}
       </div>
     );
   }
